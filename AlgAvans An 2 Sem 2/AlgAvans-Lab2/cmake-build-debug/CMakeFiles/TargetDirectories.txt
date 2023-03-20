@@ -1,0 +1,3 @@
+E:/Facultate/CLionProjects/AlgAvans-Lab2/cmake-build-debug/CMakeFiles/AlgAvans_Lab2.dir
+E:/Facultate/CLionProjects/AlgAvans-Lab2/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/Facultate/CLionProjects/AlgAvans-Lab2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
