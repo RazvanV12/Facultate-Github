@@ -1,0 +1,3 @@
+E:/Facultate/Facultate-Github/AlgAvans An 2 Sem 2/AlgAvans-Lab3/cmake-build-debug/CMakeFiles/AlgAvans_Lab3.dir
+E:/Facultate/Facultate-Github/AlgAvans An 2 Sem 2/AlgAvans-Lab3/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/Facultate/Facultate-Github/AlgAvans An 2 Sem 2/AlgAvans-Lab3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
