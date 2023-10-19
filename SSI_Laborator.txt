@@ -1,0 +1,222 @@
+Laboratorul 1 - Securitatea Sist. de Informatica:
+
+2. Securitatea este o ramura interesanta a informaticii deorece aceasta necesita un adversar, o lupta 1 la 1 intre cel care asigura securitatea si cel care cauta sa exploateze diferite slabiciuni ale ei.
+
+6.
+	Malware (software dăunător): Este un termen general care se referă la orice tip de software conceput pentru a provoca daune unui computer sau rețea, inclusiv viruși, troieni, spyware, ransomware și altele.
+
+	Virus: Este un tip specific de malware care se atașează de fișiere sau programe existente și se replică atunci când acestea sunt executate. Virusul poate cauza daune sistemului și poate afecta funcționalitatea acestuia.
+
+	Dropper: Un dropper este o componentă a malware-ului care are rolul de a descărca sau instala alte tipuri de malware pe un sistem infectat. Este folosit pentru a lansa malware-ul principal pe sistemul țintă.
+- are programele in codul lui sursa si de acolo instaleaza 
+	Downloader: Acesta este un tip de malware specializat în descărcarea altor fișiere malware sau componente pe un sistem infectat. Descărcătorii sunt adesea utilizați pentru a aduce malware mai complex într-un sistem.
+
+	Trojan (troian): Un troian este un tip de malware care se prezintă ca o aplicație aparent inofensivă sau utilă, dar, în realitate, are funcționalități dăunătoare ascunse. Acesta poate deschide uși din spate pentru alți atacatori sau fura date personale.
+
+	Spyware: Spyware-ul este conceput pentru a colecta informații despre activitățile utilizatorului fără consimțământul acestuia. Acesta poate monitoriza tastarea, navigarea pe internet sau alte activități pentru a fura informații confidențiale.
+
+	Riskware (software cu risc): Este software care, deși nu este în mod necesar dăunător în sine, poate prezenta riscuri de securitate sau de confidențialitate, cum ar fi aplicațiile care au vulnerabilități sau care pot fi utilizate în mod neadecvat.
+
+	Ransomware: Ransomware-ul este un tip de malware care criptează datele de pe un sistem și cere o răscumpărare pentru a le decripta. Victimele se confruntă cu o alegere între a plăti răscumpărarea sau a pierde accesul la datele lor.
+
+	Adware (publicitate dăunătoare): Este software care afișează publicitate intruzivă și nedorită pe un computer sau dispozitiv. Scopul adware-ului este adesea de a genera bani pentru creatorii săi prin intermediul afișării reclamelor.
+
+	Worm (vierme informatic): Un vierme este un tip de malware care se poate răspândi independent, fără a avea nevoie de un fișier gazdă. Se replică și se răspândește automat pe rețele, infectând alte sisteme.
+
+	Obfuscare: Obfuscare este o tehnică utilizată în dezvoltarea de malware pentru a ascunde codul sursă sau funcționalitatea sa, dificultând analiza și detectarea de către programele antivirus sau alți cercetători de securitate.
+
+Laboratorul 2 - Securitatea Sist. de Informatica:
+
+Notite:
+
+Non-repudierea = inabilitatea unei persoane de a nega ceva ce a facut
+Confidentialitate - se alege folosind orice criptosistem ( AES, DES, RSA, ... )
+Integritate - 	MAC = message authentication code
+				MIC = message integrity check
+Exista 2 tipuri de adversati:
+	1. adversar cu putere nelimitata -> avem nevoie de securitate perfecta
+	2. adversar cu putere polinomiala ( PPT ) 
+
+O(1) < O(sqrt(n)) < O(n) < O(polinomiala) < O(exponentiala)
+Daca sarcina este incadrata in primele 4 complexitati -> probabilitatea de succes este neneglijabila ( slabiciune a securitatii )
+Daca sarcina este incadrata in a 5-a complexitatea -> probabilitatea de succes este neglijabila
+
+Definite: O functie f : N -> R+ este PPT neglijabila daca oricare ar fi o putere c ( numar natural ), exista un prag n0 ( numar natural ) pentru care pentru orice numar x > n0 
+avem ca f(x) < 1/x^c 
+
+Securitatea perfecta: 
+	M - spatiul mesajelor clare = plaintext
+	K - spatiul cheilor de criptare 
+	C - spatiul mesajelor criptate = ciphertext
+	
+	E(m, k) = E(m) = c
+	d(c, kd) = dkd (c) = m
+	
+	Daca ke = kd => cifrul/criptosistemul este simetric ( cu cheie secreta ) 
+	Daca ke != kd => un criptosistem asimetric ( cu cheie publica )
+	
+	Pb1: dimensiunea lui k = dimensiunea lui m 
+	Pb2: Gestionarea/Distribuirea cheii catre celelalte entitati autorizate
+
+1. 
+	A - 4
+	B - 2
+	C - 5
+	D - 1
+	E - 6
+	F - 3
+
+2. 
+	1 - Confidentialitate
+	2 - Disponibilitate
+	3 - Integritate
+	4 - Confidentialitate
+	5 - Integritate
+
+3. 
+	1 - False
+	2 - Adevarat
+	3 - False
+
+4. 
+	1 - Neneglijabila
+	2 - Neneglijabila
+	3 - Neneglijabila
+	4 - Neglijabila
+	5 - Neglijabila: f1 si f2 sunt neglijabile , fie c1 si c2 (nr. nat.) => exista n1, n2 pt care 	f1(x) < 1/x^c1 , oricare ar fi x > n1
+																									f2(x) < 1/x^c2 , oricare ar fi x > n2 
+	=> f1(x) + f2(x) < 1/x^c1 + 1/x^c2 <= 1/x^(min(c1,c2)) + 1/x(min(c1,c2)) = 2/x^(min(c1,c2)) < 1/x^min(c1,c2)-1 ; oricare ar fi x > max(c1,c2)
+	6 - Neneglijabila: Pp prin absurd ca f(x) este neglijabila:
+	f(x) = f1(x) + f2(x) => f2(x) = f(x) - f1(x) < f(x) + f1(x) ( f(x) si f1(x) sunt ambele neglijabile ) => f2 este neglijabila => COntradictie
+
+5. In practica preferam sa utilizam securitatea computationala in defavoarea celei perfecte deoarece in cazul securitatii perfecte vom intampina urmatoarea problema -
+dimensiunea cheii trebuie sa fie egala cu dimensiunea mesajului, lucru care poate fi costisitor din punct de vedere al spatiului de stocare si al distribuirii cheii.
+
+6. 
+	1. 2^512
+	2. 2^512 / 2^30 = 2^(512-30) = 2^482 secunde
+	3. Consider ca nu este un atac eficient deoarece daca calculam, timpul necesar este egal cu 3,96 * 10^127 in ani.
+	
+	
+Laboratul 3 - Securitatea Sist. in Informatica:
+
+
+1. One Time Pad este un sistem de criptare perfect sigur daca este folosit corect.
+2. Rezultatul folosind cea de a doua cheie: Orice text clar poate obtinut dintr-un text criptat cu OTP dar cu o alta cheie.
+	Cheia: ecad8de748ef0b1a857f032101bdb51f5e07c3c37931c37b3c3219ef748215708cf046a18588c1e2f897ca0076ca7f924eb1e6efcb1b905afed5d110228d24049b824cf2d3ec4980219208fa55cad9
+	
+3.Reutilizarea cheii în criptarea OTP (One-Time Pad) reprezintă un risc semnificativ pentru securitate, deoarece subminează proprietățile fundamentale de securitate pe care OTP este proiectat să le ofere. Iată câteva motive cheie pentru care reutilizarea cheii este problematică în criptarea OTP:
+	1.Securitate perfectă: OTP este teoretic invincibil atunci când este folosit corect, deoarece oferă o securitate perfectă. Acest lucru înseamnă că un atacator, chiar și cu putere de calcul nelimitată, nu poate obține nicio informație despre textul clar fără a cunoaște cheia. Cu toate acestea, această proprietate se păstrează numai dacă cheia este utilizată o singură dată.
+	2.Predictibilitate: Dacă o cheie este reutilizată, devin vizibile modele în textul cifrat, ceea ce face mai ușor pentru un atacator să ghicească porțiuni ale textului clar. Reutilizarea cheii face textul cifrat vulnerabil la analiza statistică și alte tehnici de criptanaliză, ceea ce poate duce la recuperarea textului clar.
+	3.Scurgeri de informații: De fiecare dată când o cheie este reutilizată, se dezvăluie informații despre textul clar, iar aceste informații se acumulează cu fiecare reutilizare. Dacă un atacator obține cunoștințe despre textul clar într-un mesaj criptat cu o anumită cheie, poate folosi această cunoaștere pentru a face presupuneri educaționale despre alte mesaje criptate cu aceeași cheie.
+	4.Cheie compromisă: Dacă o cheie este compromisă o singură dată, toate mesajele viitoare și anterioare criptate cu aceeași cheie sunt, de asemenea, compromise. O singură vulnerabilitate în securitate poate pune în pericol confidențialitatea tuturor datelor criptate cu acea cheie.
+	5.Pierderea imprevizibilității: Puterea de bază a OTP constă în imprevizibilitatea sa. Odată ce o cheie este reutilizată, devine previzibilă, ceea ce este în contradicție cu principiul fundamental de securitate al OTP.
+	6.Integritatea mesajului: OTP asigură confidențialitatea, dar nu asigură integritatea mesajului sau autentificarea. Reutilizarea unei chei ar putea permite, de asemenea, unui atacator să modifice textul cifrat într-un mod care ar putea să nu fie detectat dacă cheia nu este păstrată secretă și utilizată doar o dată.
+	
+4. 
+Un exemplu istoric notabil de sistem de criptare care folosește metoda substituției este cifrul Caesar, numit și cifrul cu deplasare. Acest cifru a fost folosit de Julius Caesar în
+timpul Imperiului Roman și este unul dintre cele mai simple și mai cunoscute cifre de substituție.
+
+Funcționarea cifrului Caesar este simplă: fiecare literă din textul clar este înlocuită cu litera care se află la un anumit număr de poziții înainte sau înapoi în alfabet, 
+cunoscut sub numele de cheie de deplasare. De exemplu, cu o cheie de deplasare de 3, litera A este înlocuită cu litera D, litera B cu E, și așa mai departe. Procesul este simetric, 
+astfel încât pentru decriptare, aceeași cheie de deplasare este folosită pentru a readuce textul cifrat la forma originală.
+
+Exemplu de criptare si decriptare cu cifrul Caesar ( cheia este 3 ): 
+	Caesar Cipher Encoded Message:  Frgduhd Fdhvdu qh-d irvw phqwlrqdwd lq sulpxo fxuv gh VVL
+	Caesar Cipher Decoded Message:  Codarea Caesar ne-a fost mentionata in primul curs de SSI
+
+Cifrul Caesar este un exemplu simplu de criptare prin substituție, dar este ușor de spart prin forță brută deoarece are doar 25 de chei posibile (de la 1 la 25).
+Exista si alte metode de a sparge cifrul Caesar:
+	1.Analiza frecvenței literelor: Dacă textul codat este suficient de lung, poți efectua un analiză a frecvenței literelor pentru a identifica cheia. În limba engleză, litera "E" este cea mai frecventă literă, așa că litera cea mai frecventă din textul codat ar trebui să corespundă lui "E." De asemenea, se pot căuta și alte corespondențe între literele frecvente din limba engleză și literele din text.
+	2.Coerentarea cu contextul: În unele cazuri, contextul mesajului sau cunoștințele despre emițător și mesaj pot ajuta la identificarea cheiei. De exemplu, dacă știi că mesajul poate conține anumite cuvinte sau fraze specifice, poți să le cauți în textul decodat pentru a ghici cheia.
+	3.Duplicarea textului clar: Dacă se bănuiește că o anumită parte a textului clar poate apărea în textul codat (de exemplu, daca stii ca mesajul incepe cu "salut"), atunci se poate încerca duplicarea textului clar pentru a căuta corespondențe.
+
+5.
+Un exemplu clasic de sistem de criptare care utilizează metoda transpoziției este cifrul Permutare, numit și cifrul de transpoziție. Acesta este un tip de cifru de substituție, unde literele mesajului sunt rearanjate într-un anumit mod, dar nu sunt înlocuite cu alte litere.
+Cum funcționează cifrul de permutare:
+1. Selectarea unei chei de permutare: Cheia pentru cifrul de permutare este o permutare a numerelor de la 1 la n, unde n este lungimea textului clar. De exemplu, pentru un text de șase caractere, cheia ar putea fi "2 1 4 3 6 5".
+2. Rearanjarea literelor: Fiecare literă din textul clar este plasată în poziția corespunzătoare conform cheii de permutare. Dacă avem textul "CRIPT", iar cheia este "2 1 4 3 6 5," atunci textul cifrat va fi "IRCTP."
+3. Decodificarea: Pentru a decodifica textul, trebuie să știi cheia de permutare corectă și să rearanjezi literele textului cifrat în funcție de această cheie pentru a obține textul clar.
+Cifrul de permutare este un exemplu simplu de criptare prin transpoziție și este adesea folosit în contexte didactice sau pentru criptarea datelor cu niveluri scăzute de securitate. Cu toate acestea, nu oferă securitate în fața atacurilor criptanalitice avansate, deoarece este ușor de spart. Criptosistemele moderne utilizează metode de criptare mult mai puternice și complexe pentru a asigura securitatea datelor.
+
+Exemplu de criptare si decriptare cu cifrul Permutare :
+	Key Permutare:  [12, 25, 52, 50, 44, 40, 9, 11, 7, 5, 31, 43, 23, 28, 33, 45, 24, 46, 51, 10, 36, 8, 18, 19, 29, 48, 26, 47, 30, 1, 42, 2, 4, 16, 13, 14, 21, 39, 3, 53, 49, 41, 35, 22, 32, 34, 15, 27, 37, 38, 17, 6, 20]
+	Permutare Encrypted Message:  nsrtedpiarad  t ecarm utoitr C oar prodepa elaeeetmea
+	Permutare Decrypted Message:  Codarea prin permutare este o alta metoda de criptare
+	
+Criptanaliza cifrului cu permutare, cunoscut și sub numele de cifru de transpoziție, este în general mai ușoară decât pentru alte cifre mai complexe, dar depinde în mare măsură de implementare și de cheie. Iată câteva tehnici de criptanaliză care se pot folosi pentru a încerca să spargi cifrul cu permutare:
+1. Analiza frecvenței caracterelor: Una dintre primele tehnici este analiza frecvenței caracterelor. Prin numărarea frecvenței aparițiilor fiecărui caracter în textul criptat, poți să identifici caracterele cele mai comune și să faci presupuneri cu privire la ce ar putea reprezenta. Acest lucru poate să te ajute să deduci o parte din cheie.
+2. Analiza lungimii cheii: În unele cazuri, lungimea cheii poate fi dedusă din structura mesajului criptat. Dacă poți deduce lungimea cheii, este posibil să reduci spațiul de căutare pentru cheia efectivă.
+3. Atacul prin forță brută: Dacă ai o idee despre lungimea cheii, poți încerca să forțezi toate permutările posibile pentru a vedea care dintre ele produce un text clar sensibil. Aceasta este o metodă de spargere a cifrului prin încercarea tuturor posibilităților și poate fi fezabilă pentru chei scurte.
+4. Analiza cuvintelor comune: Caută cuvinte comune și secvențe de caractere care ar putea apărea în textul clar. Aceasta poate oferi indicii importante despre cheie.
+5. Utilizarea contextului și a limbii: Dacă știi limba în care este scris textul clar, poți folosi cunoștințele despre limbă pentru a deduce cuvinte și structuri gramaticale în textul criptat.
+
+6. 
+Pentru a determina cea mai frecventă literă din textul dat, putem efectua o analiză de frecvență a caracterelor și să numărăm câte apariții are fiecare literă. Iată rezultatele:
+
+- "J" apare de 83 de ori
+- "W" apare de 69 de ori
+- "G" apare de 59 de ori
+- "E" apare de 56 de ori
+- "H" apare de 56 de ori
+- "M" apare de 47 de ori
+- "F" apare de 41 de ori
+- "O" apare de 36 de ori
+- "N" apare de 31 de ori
+- "C" apare de 26 de ori
+- "D" apare de 25 de ori
+- "B" apare de 24 de ori
+- "K" apare de 24 de ori
+- "A" apare de 22 de ori
+- "L" apare de 20 de ori
+- "X" apare de 9 de ori
+- "Q" apare de 9 de ori
+- "R" apare de 7 de ori
+- "U" apare de 7 de ori
+- "P" apare de 6 de ori
+- "V" apare de 4 de ori
+- "I" apare de 4 de ori
+- "S" apare de 3 de ori
+- "Y" apare de 3 de ori
+- "T" apare de 2 de ori
+- "Z" apare de 1 dată
+
+Așadar, litera "J" este cea mai frecventă literă din textul dat.
+
+J = E	10 - 5
+W = T	23 - 20
+G = A 	7 - 1
+Daca ar fi sa urmam dupa o analiza de frecventa a literelor
+
+"HWUJWGHMW HW 1978, GDJV DEUJ" - observam in secventa asta HW inainte de un an, fiind text in limba engleza presupun ca HW = in 
+=> H(8) = I(9) si W(23) = N(14)
+H = I 
+W = N
+EWK = AND ? => E = O , K = D
+
+"EWK E NJWC GDOMARD" - observam ca E apare singur, acesta fiind I sau A , presupunand ca textul e scris intr-un limbaj formal, este in mijlocul propozitii deci nu poate fii interjectie
+E = A	W = N 	H = I
+5 = 1	23=14	8 = 9
+K = D => 11 = 4
+EOJ = ARE ? => O = R si J = E => 15 = 18 si 10 = 5
+Pp: G = T , C = S , D = H 
+
+LJJW = MOON 
+V = Y, L = M => 22 = 25 , 12 = 13
+
+MY
+GM 
+HW = IN 
+EG = AS/AT ?
+EW = AN 
+LV = MY 
+EC = AT/AS ?
+LJ = ME 
+
+7.
+Folosim codarea din luna asta: https://operationturing.tumblr.com/image/138700911318 in ziua a 19-a pentru Enigma si cu prima coloana din Kennguppen
+RAZVA N -> XXWST S
+Pentru decriptare am resetat pozitia initiala a inelelor la pozitia la care se aflau cand am codat numele, restul setarilor ramanand la fel.
+Un exemplu de cuvant care nu poate fi cu siguranta numele "Razvan" criptat este Razvan, deoarece cifrul Enigma rearanjeaza literele pentru criptare.
+			
+	
