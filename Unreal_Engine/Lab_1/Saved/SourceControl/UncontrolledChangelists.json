@@ -1,0 +1,49 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/StarterContent/Props/MaterialSphere.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/Own-Resources/Green.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/1/OD/YPSPM063O6XAJVKSDHY2JX.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/3/AI/0XWE3RNM2XQC0ST1KXG02O.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/AJ/2XZ3RUK0LFB63FVNQE7P5R.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/7/L5/1ZJ54FMA0DAL3I2Q8RFAIB.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/XJ/HL558UUAGCS9HVVOI0S7PX.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/E/UE/YUZ9741T50O1SYRX90OB0S.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/FK/4RRKN7YPU7VPVGWNR7U3UI.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/AB/ECUSBVSS4DCNZAXOYGUVII.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/F7/3J0F1CQH6NX8SWUBELLZK9.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/C/PU/8EWJSRMXU2NDPAI767SMNM.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/7/WV/W21KIGSWOKB1ZYWAF8A002.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/E/SH/QNW5619K9I2C2BCO1V04HJ.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/9/3C/MTU1M6D89G2DDU7AXDMHM1.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/5/0E/GB871IJ1O7HVHT4K2PYHJH.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/B/H5/7OIA2311H7KHE2MYM5WYRV.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/9/XR/1IXMTA84DLRKKGJFNQN256.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/E/UA/I9BW4XSSZC4PIZGQDDQLJX.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/S4/M8WW5H2YYDKDLHQYZD6E7J.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/B/3V/NZYQQB0718QWTNVECL0X3X.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/B/Z9/NA9PBFJ1LW5JB8KO5V0IQJ.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/8/CV/HWCZA8FJJK6S61DAK292UH.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/D/IP/T932UFO0UYYRZDC7P29LJZ.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/JP/54CEV7MYMHKJCNKDKDCNYD.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/1B/KXK816LQX89629JXK61E09.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/A/MF/GBEOTZJKKY9A8YC60MM8XA.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/8/FW/S9A9JS6C6QPZ3U6VKTT1CR.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/E8/TICKQU5MCTVFJNNHFNICX6.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/6/KE/38WFYNGCNVDWNO3AZ3170R.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/2/97/165DOPKPB3PBP20AK3LAM5.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/3/6G/U5KILWUNS0YH3OY84U9MUP.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/E/ZL/M8XRJKL18M2HDLVEOEY4XR.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/__ExternalActors__/FirstPerson/Maps/FirstPersonMap/9/NI/EID1XHUVUCLI67B0JNJOWS.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/FPWeapon/Materials/BaseMaterial.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/StarterContent/Props/Materials/M_Chair.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_1/Content/StarterContent/Props/Materials/M_TableRound.uasset"
+			]
+		}
+	]
+}
