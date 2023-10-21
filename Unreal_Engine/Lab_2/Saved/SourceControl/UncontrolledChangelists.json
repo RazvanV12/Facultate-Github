@@ -1,0 +1,19 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/StarterContent/Audio/Collapse01.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Nivel_1.umap",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Lab_2/Metalic.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Lab_2/Transparent.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Lab_2/2Culori.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Lab_2/SmileyFace.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Lab_2/SimpleColor.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_2/Content/Lab_2/smile.uasset"
+			]
+		}
+	]
+}
