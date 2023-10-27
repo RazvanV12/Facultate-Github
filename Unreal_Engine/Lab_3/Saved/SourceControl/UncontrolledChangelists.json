@@ -1,0 +1,28 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/StarterContent/Audio/Collapse01.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Textura_Teren.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Level1.umap",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Pawn.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Game_Style.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Grass_LayerInfo.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/grass_pexels_.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Gravel_LayerInfo.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/ground_pexels_.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Sand_LayerInfo.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Cale.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Smiley.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Plimbaret.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Cale2.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/CobbleStone_LayerInfo.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/smile.uasset",
+				"E:/Facultate/Facultate-Github/Unreal_Engine/Lab_3/Content/Lab_3_Resurse/Wood_LayerInfo.uasset"
+			]
+		}
+	]
+}
