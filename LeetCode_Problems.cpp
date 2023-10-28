@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -76,7 +77,6 @@ int maxProfit(vector<int> & prices){
 // [2, 3, 1, 1, 4]
 // Ideea se rezuma la a pleca de la ultima pozitie si a gasi cea mai din stanga pozitie din care putem ajunge la capatul vectorului ( o notam X ), dupa care reapelam functia 
 // pentru un vector copie cu ultima pozitie fiind X
-
 bool canJump(vector<int>& nums) {
         if(nums.size() == 1)
             return true;
@@ -103,7 +103,6 @@ bool canJump(vector<int>& nums) {
 //45. Jump Game II
 // [2, 3, 1, 1, 4]
 // Ideea se rezuma la a cauta in urmatoarele nums[0] elemente pozitia care te duce cel mai departe, dupa care aceea devine noua "prima pozitie" si tot asa..
-
 int jump(vector<int>& nums) {
     int firstIndex = 0, counter = 1, newFirstIndex;
     unsigned long long size = nums.size();
@@ -121,6 +120,22 @@ int jump(vector<int>& nums) {
     }
     return counter;
 }
+
+// 274. H-Index
+// [3, 0, 6, 1, 5]
+// Sortam vectorul ( in O(nlogn) ) dupa care mergem cu un for de la 0 la n si verificam daca vector[i] > n- i returnam i
+int hIndex(vector<int> & citations){
+    sort(citations.begin(), citations.end());
+    int size = citations.size();
+    for(int i = 0; i < size; i++){
+        if(citations[i] >= size - i)
+            return (size - i);
+    }
+    return 0;
+}
+
+
+
 int main(){
     vector<int> nums = {2, 0, 2, 0 , 1};
     cout << jump(nums);
