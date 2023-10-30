@@ -3,9 +3,6 @@
 #include "DragonClass.hpp"
 #include "EnemyClass.hpp"
 #include "NinjaClass.hpp"
-// #include "E:\Facultate\Facultate-Github\DragonClass.h"
-// #include "E:\Facultate\Facultate-Github\DragonClass.h"
-// #include "E:\Facultate\Facultate-Github\NinjaClass.h"
 
 using namespace std;
 
@@ -55,6 +52,22 @@ using namespace std;
 //  print something
 //}
 // Default handler needs to be the last handler.
+
+// Templates:
+// template<typename T>
+// void Swap(T& a, T& b){
+//  T temp = a;
+//  a = b;
+//  b = temp;
+//}
+// Swap<int>(a, b)
+
+// Overloading = different functions with same name and different parameters
+// Overriding = different functions with same name and different implementation in Child -> Parent class
+
+// Static keyword - tells the compiler to have the variable visible only in the certain header file
+// Static keyword for a variable in a class - there is only 1 variable within all instances of objects
+// Static function - can't have it used on an instance, only static function can acces static variables
 
 int main(){
     Dragon dragon(100, 10, 5, "default");
