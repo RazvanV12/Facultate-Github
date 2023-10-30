@@ -1,5 +1,8 @@
 #include <iostream>
 #include <vector>
+#include "DragonClass.hpp"
+#include "EnemyClass.hpp"
+#include "NinjaClass.hpp"
 // #include "E:\Facultate\Facultate-Github\DragonClass.h"
 // #include "E:\Facultate\Facultate-Github\DragonClass.h"
 // #include "E:\Facultate\Facultate-Github\NinjaClass.h"
@@ -25,127 +28,37 @@ using namespace std;
 
 // Vom avea clasa de baza Enemy abstracta, care va fi mostenita de 2 clase: dragon si ninja
 
-class Enemy{
-protected:
-    float hp;
-    float movementSpeed;
-    float damage;
+// Smart pointer - container for a raw container
+//      -> they deallocate memory automatically
+//      -> 3 pointers: unique, shared and weak
+//      -> #include <memory>
+//  unique: to a certain addres there can only be assigned 1 unique pointer
+//  smart: there is a counter that indicates how many pointers are assigned to a certain address
+//  weak: when there is only weak pointers assigned to a addres ( no strong pointers ) the memory will deallocate
 
-public:
-    float getHp(){
-        return hp;
-    }
-    void setHp(float newHp){
-        hp = newHp;
-    }
-    float getMovementSpeed(){
-        return movementSpeed;
-    }
-    void setMovementSpeed(float newMovementSpeed){
-        movementSpeed = newMovementSpeed;
-    }
-    float getDamage(){
-        return damage;
-    }
-    void setDamage(float newDamage){
-        damage = newDamage;
-    }
-    virtual void Move() = 0;
-    virtual void Attack() = 0;
-    Enemy(){};
-    Enemy(float _movementSpeed, float _damage){
-        hp = 100;
-        movementSpeed = _movementSpeed;
-        damage = _damage;
-    }
-    Enemy(float _hp, float _movementSpeed, float _damage){
-        hp = _hp;
-        movementSpeed = _movementSpeed;
-        damage = _damage;
-    }
-    Enemy(Enemy & original){
-        hp = original.hp;
-        movementSpeed = original.movementSpeed;
-        damage = original.damage;
-    }
-    bool operator==(Enemy const &other){
-        if(this->hp == other.hp && this->movementSpeed == other.movementSpeed && this->damage == other.damage)  
-            return true;
-        return false;
-    }
-};
-class Dragon : public Enemy{
-    string skin;
-public:
-    void Attack(){
-        cout << "Dragon attacks" << endl;
-    }
+// Upcasting & Downcastig
+// Base class = b, Derived class = d
+// Upcasting : Base *ptr = &derived; ( implicity type cast allowed )
+// Downcasting : Only allowed with explicit casting
+// Because the is-a relationship ( public inheritance ) is not, in most cases, symmetric
 
-    void Move(){
-        cout << "Dragon moves at " << movementSpeed << " speed" << endl;
-    }
-    Dragon(){};
-    Dragon(float _hp, float _movementSpeed, float _damage, string _skin) : Enemy(_hp, _movementSpeed, _damage){
-        skin = _skin;
-    }
-    Dragon(float _movementSpeed, float _damage, string _skin) : Enemy(_movementSpeed, _damage){
-        skin = "default";
-    }
-    ostream& operator<<(ostream &COUT){
-        COUT << skin << endl;
-        return COUT;
-    }
-};
-
-class Ninja : public Enemy{
-    int teacherName_Size;
-    char* teacherName;
-
-public:
-    Ninja(){};
-    Ninja(float _hp, float _movementSpeed, float _damage, int _teacherName_Size, string _teacherName) : Enemy(_hp, _movementSpeed, _damage){
-        teacherName_Size = _teacherName_Size;
-        teacherName = new char [teacherName_Size];
-        for(int i = 0; i < _teacherName_Size; i++){
-            teacherName[i] = _teacherName[i];
-        }
-    }
-    ~Ninja(){
-        delete [] teacherName;
-        teacherName = nullptr;
-        cout << "Destructor called "<< endl;
-    }
-    Ninja(Ninja &original){
-        this->hp = original.hp;
-        this->movementSpeed = original.movementSpeed;
-        damage = original.damage;
-        teacherName_Size = original.teacherName_Size;
-        teacherName = new char[teacherName_Size];
-        for(int i = 0; i < teacherName_Size; i++){
-            teacherName[i] = original.teacherName[i];
-        }
-        cout << "Copy constructor called " << endl;
-    }
-    void Attack(){
-        cout << "Ninja attack" << endl;
-    }
-    void Move(){
-        cout << "Ninja moves at " << movementSpeed << " speed " << endl;
-    }
-
-    friend ostream& operator<<(ostream & COUT, Ninja &ninja);
-};
-
-ostream& operator<< (ostream &COUT, Ninja &ninja){
-    for(int i = 0; i < ninja.teacherName_Size; i++){
-        COUT << ninja.teacherName[i];
-    }
-    return COUT;
-}
+// Exception handling:
+//When you throw an exception, the execution of the function ends
+//try 
+//  ...
+//catch (typeOfException exception_name){
+//      print exception
+//}
+//You can write multiple catch blocks for 1 try block
+//Default handler can handle any type of exception
+//catch(...){
+//  print something
+//}
+// Default handler needs to be the last handler.
 
 int main(){
     Dragon dragon(100, 10, 5, "default");
-    dragon.operator<<(cout);
+    cout << dragon;
     Ninja ninja(100, 10, 5, 4, "John");
     cout << ninja << endl << ninja << endl;
     ninja.Attack();
