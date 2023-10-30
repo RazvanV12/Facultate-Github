@@ -99,7 +99,6 @@ bool canJump(vector<int>& nums) {
         return (canJump(copy));
     }
 
-
 //45. Jump Game II
 // [2, 3, 1, 1, 4]
 // Ideea se rezuma la a cauta in urmatoarele nums[0] elemente pozitia care te duce cel mai departe, dupa care aceea devine noua "prima pozitie" si tot asa..
