@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace std;
 
@@ -133,11 +134,44 @@ int hIndex(vector<int> & citations){
     return 0;
 }
 
+// 380. Insert Delete GetRandom O(1)
+// The idea is to have a combination of unordered map + vector to hold the data
+// In the unordered map the key will be the value of the element in the vector and the value asociated to the key will be the index in array
+// The array simply holds the values.
+class RandomizedSet{
+    vector<int> array;
+    unordered_map<int, int> map;
+public:
+    RandomizedSet(){
+    }
 
+    bool insert(int val){
+        if(map.find(val) == map.end()){
+            return false;
+        }
+        array.push_back(val);
+        map[val] = array.size() - 1;
+        return true;
+    }
+
+    bool remove(int val){
+        if(map.find(val) == map.end()){
+            return false;
+        }
+        auto it = map.find(val);
+        array[it->second] = array.back();
+        array.pop_back();
+        map[array[it->second]] = it->second; 
+        map.erase(val);
+        return true;
+    }
+
+    int getRandom(){
+        return (rand() % array.size());
+    }
+};
 
 int main(){
-    vector<int> nums = {2, 0, 2, 0 , 1};
-    cout << jump(nums);
     
     return 0;
 }

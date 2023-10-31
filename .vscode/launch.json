@@ -9,7 +9,7 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "e:/Facultate/Facultate-Github",
-      "program": "e:/Facultate/Facultate-Github/build/Debug/outDebug",
+      "program": "${workspaceRoot}/a.exe",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -59,6 +59,7 @@
   "files.associations": {
     "iosfwd": "cpp",
     "vector": "cpp",
-    "iostream": "cpp"
+    "iostream": "cpp",
+    "new": "cpp"
   }
 }
