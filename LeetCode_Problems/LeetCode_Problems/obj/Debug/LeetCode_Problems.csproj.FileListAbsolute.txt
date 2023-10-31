@@ -1,0 +1,7 @@
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\bin\Debug\LeetCode_Problems.exe
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\bin\Debug\LeetCode_Problems.pdb
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\obj\Debug\LeetCode_Problems.csproj.AssemblyReference.cache
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\obj\Debug\LeetCode_Problems.csproj.SuggestedBindingRedirects.cache
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\obj\Debug\LeetCode_Problems.csproj.CoreCompileInputs.cache
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\obj\Debug\LeetCode_Problems.exe
+E:\Facultate\Facultate-Github\LeetCode_Problems\LeetCode_Problems\obj\Debug\LeetCode_Problems.pdb
