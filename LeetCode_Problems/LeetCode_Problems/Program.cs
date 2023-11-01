@@ -156,12 +156,114 @@ namespace LeetCode_Problems
             return result.Substring(0, result.Length - 1);
         }
         
+        // 12. Integer to Roman
+        // The idea is to simply walk the number from left to right, if the number is of 4 digits and the second digit is 4/9 we write CD/CM, etc...
+        public static string IntToRoman(int num)
+        {
+            string result = null;
+            int counter = 0;
+            if (num > 999)
+            {
+                counter = num / 1000;
+                for (int i = 0; i < counter; i++)
+                    result += 'M';
+            }
+            num = num % 1000;
+            if (num > 99)
+            {
+                counter = num / 100;
+                if (counter < 4)
+                    for (int i = 0; i < counter; i++)
+                        result += 'C';
+                if (counter == 4)
+                    result += "CD";
+                if (counter < 9 && counter > 4)
+                {
+                    result += 'D';
+                    for (int i = 0; i < counter - 5; i++)
+                        result += 'C';
+                }
+
+                if (counter == 9)
+                    result += "CM";
+            }
+            num = num % 100;
+            if (num > 9)
+            {
+                counter = num / 10;
+                if (counter < 4)
+                    for (int i = 0; i < counter; i++)
+                        result += 'X';
+                if (counter == 4)
+                    result += "XL";
+                if (counter < 9 && counter > 4)
+                {
+                    result += 'L';
+                    for (int i = 0; i < counter - 5; i++)
+                        result += 'X';
+                }
+
+                if (counter == 9)
+                    result += "XC";
+            }
+
+            num = num % 10;
+            counter = num;
+            if (counter < 4)
+                for (int i = 0; i < counter; i++)
+                    result += 'I';
+            if (counter == 4)
+                result += "IV";
+            if (counter < 9 && counter > 4)
+            {
+                result += 'V';
+                for (int i = 0; i < counter - 5; i++)
+                    result += 'I';
+            }
+
+            if (counter == 9)
+                result += "IX";
+            return result;
+        }
         
+        // 6. ZigZag Conversion
+        // The idea is to make an array of strings and go through 's' by adding a letter to each array from 0 -> (n-1) and then back from (n-1) to 0 and so on till the string 's' is done, after that we simply concatenate each array from 0 to (n-1)
+        public static string Convert(string s, int numRows)
+        {
+            string[] array = new string[numRows];
+            string result = null;
+            int index = 0;
+            bool isIncreasing = true;
+            if (numRows == 1)
+                return s;
+            for (int i = 0; i < s.Length; i++)
+            {
+                array[index] += s[i];
+                if (isIncreasing)
+                    index++;
+                else
+                {
+                    index--;
+                }
+                if (index == numRows - 1)
+                    isIncreasing = false;
+                if (index == 0)
+                    isIncreasing = true;
+            }
+
+            for (int i = 0; i < numRows; i++)
+            {
+                result += array[i];
+            }
+
+            return result;
+        }
+        
+        // 11. Container With Most Water
         
         public static void Main(string[] args)
         {
-            /*string test = "blue is the sky";
-            string result = ReverseWords(test);*/
+            
         }
     }
 }
