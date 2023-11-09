@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LeetCode_Problems
 {
@@ -260,10 +263,126 @@ namespace LeetCode_Problems
         }
         
         // 11. Container With Most Water
+        // We simply check with 2 loops each possible solution and return the max value
+        // We can first check if with the height[i] can be resulted in an area higher than the max one calculated so far
+        public static int MaxArea(int[] height)
+        {
+            int maxArea = 0;
+            for (int i = 0; i < height.Length - 1; i++)
+            {
+                for (int j = i + 1; j < height.Length; j++)
+                {
+                    if (height[i] * (height.Length - 1 - i) < maxArea)
+                        break;
+                    if (height[i] < height[j])
+                    {
+                        if (height[i] * (j - i) > maxArea)
+                            maxArea = height[i] * (j - i);
+                    }
+                    else 
+                        if (height[j] * (j - i) > maxArea)
+                            maxArea = height[j] * (j - i);
+                }
+            }
+            return maxArea;
+        }
+        
+        // 15. 3Sum
+        // First we sort the array,  then we start from left to right and for each number we use the algorithm from 2Sum II ( with 2 pointers left and right and we check for the sum to be == nums[i] )
+        // [-4, -1, -1, 0, 1, 2]
+        // Time Complexity: O(n^2) , Space Complexity: O(1)
+        // [-3, -2, -1, 0, 1, 2, 3]
+        public static IList<IList<int>> ThreeSum(int[] nums)
+        {
+            Array.Sort(nums);
+            IList<IList<int>> result = new List<IList<int>>();
+            for (var i = 0; i < nums.Length - 2; i++)
+            {
+                if(i != 0 && nums[i] == nums[i - 1])
+                    continue;
+                var left = i + 1;
+                var right = nums.Length - 1;
+                while (left < right)
+                {
+                    if (nums[left] + nums[right] == -nums[i])
+                    {
+                        IList<int> aux = new List<int>();
+                        aux.Add(nums[i]);
+                        aux.Add(nums[left]);
+                        aux.Add(nums[right]);
+                        result.Add(aux);
+                        while (nums[right - 1] == nums[right] && right > 1)
+                            right--;
+                        while (nums[left + 1] == nums[left] && left < nums.Length - 2)
+                            left++;
+                    }
+                    if(nums[left] + nums[right] < -nums[i])
+                        left++;
+                    else
+                        right--;
+                }
+            }
+            return result;
+        }
+        
+        // 209. Minimum Size Subarray Sum
+        //  target = 7, nums = [2,3,1,2,4,3]
+        // Common Sliding Window Problem: we start with 2 pointers left and right both equal to 0, we move the right pointer until the sum of the subarray is >= target, then we move the left pointer until the sum of the subarray is < target,
+        // we keep track of the min length of the subarray
+        public static int MinSubArrayLen_Var1(int target, int[] nums)
+        {
+            int left = 0, right = 0, sum = 0, min = int.MaxValue;
+            while (right < nums.Length)
+            {
+                sum += nums[right];
+                while (sum >= target && left <= right)
+                {
+                    min = Math.Min(min, right - left + 1);
+                    sum -= nums[left];
+                    left++;
+                }
+
+                right++;
+            }
+            if(min > nums.Length)
+                return 0;
+            return min;
+        }
+        
+        // 3. Longest Substring Without Repeating Characters
+        // s = "abcabcbb"
+        // We use a dictionary to keep track of the last index of each character, we start with 2 pointers left and right both equal to 0, we move the right pointer until we find a duplicate character,
+        // then we move the left pointer to the last index of the duplicate character + 1
+        public static int LengthOfLongestSubstring(string s)
+        {
+            var myDict = new Dictionary<char, int>();
+            int left = 0, right = 0, max = 0;
+            while (right < s.Length)
+            {
+                if (!myDict.ContainsKey(s[right]))
+                {
+                    myDict.Add(s[right], right);
+                    max = Math.Max(max, right - left + 1);
+                    right++;
+                    continue;
+                }
+                while (myDict.ContainsKey(s[right]))
+                {
+                    myDict.Remove(s[left]);
+                    left++;
+                }
+                myDict[s[right]] = right;
+                max = Math.Max(max, right - left + 1);
+                right++;
+            }
+            return max;
+        }
+        
         
         public static void Main(string[] args)
         {
-            
+            string s = "abcabcbb"; 
+            LengthOfLongestSubstring(s);
         }
     }
 }
