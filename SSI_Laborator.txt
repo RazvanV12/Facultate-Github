@@ -218,5 +218,18 @@ Folosim codarea din luna asta: https://operationturing.tumblr.com/image/13870091
 RAZVA N -> XXWST S
 Pentru decriptare am resetat pozitia initiala a inelelor la pozitia la care se aflau cand am codat numele, restul setarilor ramanand la fel.
 Un exemplu de cuvant care nu poate fi cu siguranta numele "Razvan" criptat este Razvan, deoarece cifrul Enigma rearanjeaza literele pentru criptare.
+
+
+	Laborator 12 - SSI 
+
+1.
+	a) Adevarat
+	b) Fals
+	c) Adevarat
+	d) Adevarat 
+	e) Fals 
+	f) Fals 
+	g) Adevarat 
+	h) Fals 
 			
 	
