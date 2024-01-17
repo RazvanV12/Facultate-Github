@@ -11,10 +11,12 @@ namespace Proiect1_TehnSim
             var random = new Random();
             for (var i = 0; i < nrTests; i++)
             {
+                // Generate tests
                 int n1 = random.Next(20, 36), n2 = random.Next(20, 36), n3 = random.Next(20, 36), n4 = random.Next(20, 36);
                 if(n1 + n2 + n3 + n4 >= 100)
-                    conqueredVillages++;
+                    conqueredVillages++;    // Increase the number of conquered villages if the sum of the nobles is greater than 100
             }
+            // Return the probability of conquering a village with 4 nobles
             return conqueredVillages / nrTests;
         }
         
@@ -24,10 +26,12 @@ namespace Proiect1_TehnSim
             var random = new Random();
             for (var i = 0; i < nrTests; i++)
             {
+                // Generate tests
                 int n1 = random.Next(20, 36), n2 = random.Next(20, 36), n3 = random.Next(20, 36);
                 if(n1 + n2 + n3 >= 100)
-                    conqueredVillages++;
+                    conqueredVillages++;    // Increase the number of conquered villages if the sum of the nobles is greater than 100
             }
+            // Return the probability of conquering a village with 3 nobles
             return conqueredVillages / nrTests;
         }
         public static void Main(string[] args)

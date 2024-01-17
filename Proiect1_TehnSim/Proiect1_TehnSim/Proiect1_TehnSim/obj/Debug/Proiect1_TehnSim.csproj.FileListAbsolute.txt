@@ -5,3 +5,9 @@ E:\Facultate\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim
 E:\Facultate\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.csproj.CoreCompileInputs.cache
 E:\Facultate\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.exe
 E:\Facultate\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.pdb
+C:\Users\razva\OneDrive\Documents\GitHub\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.exe
+C:\Users\razva\OneDrive\Documents\GitHub\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.pdb
+C:\Users\razva\OneDrive\Documents\GitHub\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\bin\Debug\Proiect1_TehnSim.exe
+C:\Users\razva\OneDrive\Documents\GitHub\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\bin\Debug\Proiect1_TehnSim.pdb
+C:\Users\razva\OneDrive\Documents\GitHub\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.csproj.AssemblyReference.cache
+C:\Users\razva\OneDrive\Documents\GitHub\Facultate-Github\Proiect1_TehnSim\Proiect1_TehnSim\Proiect1_TehnSim\obj\Debug\Proiect1_TehnSim.csproj.CoreCompileInputs.cache
