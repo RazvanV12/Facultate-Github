@@ -378,11 +378,222 @@ namespace LeetCode_Problems
             return max;
         }
         
+        /* 36. Valid Sudoku
+         The first idea that comes to mind is to simply check for each cell the elements from it's line and column and to then check in the 3x3 grid that it belongs to ( basically all the elements from a grid have the same modulo 3 result for line and column )
+         */
+        public static bool IsValidSudoku(char[][] board)
+        {
+            // first we iterate through the matrix checking for each cell the elements from it's line and column ( since it is a standard 9x9 matrix, even if we have O(n^3) it is not really relevant
+            for (int i = 0; i < board.Length; i++)
+            {
+                for (int j = 0; j < board.Length; j++)
+                {
+                    if (board[i][j] == '.')
+                        continue;
+                    for (int k = j + 1; k < board.Length; k++)
+                    {
+                        if (board[i][j] == board[i][k])
+                            return false;
+                    }
+                    for (int k = i + 1; k < board.Length; k++)
+                    {
+                        if (board[i][j] == board[k][j])
+                            return false;
+                    }
+                    // We check for each element of it's 3x3 grid
+                    int gridLine = i / 3;
+                    int gridColumn = j / 3;
+                    for (int line = 3 * gridLine; line < 3 * (gridLine + 1); line++)
+                    {
+                        for (int column = 3 * gridColumn; column < 3 * (gridColumn + 1); column++)
+                        {
+                            if(i != line ||  j != column)
+                                if (board[i][j] == board[line][column])
+                                    return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        
+        /* Spiral Matrix
+         The idea is to simply walk through the matrix in a spiral way, realizing the following: 
+            - first step will be to go to the right for (n-1) times
+            - next step to go down (m-1) times
+            - then (n-1) times left
+            - then (m-2) times up
+            - then (n-2) times right
+            
+        And so on until (n-x) = 0 or (m-x) = 0, then you simply walk either (n-x) steps or (m-x) steps in the direction that is the following*/
+        public static IList<int> SpiralOrder(int[][] matrix)
+        {
+            // Since it is given m & n >= 1, we can make the first step to the right without any loop and without any error
+            IList<int> result = new List<int>();
+            bool left = false;
+            bool up = false;
+            int line = 0, column = 0;
+            int n = matrix[line].Length - 1;
+            int m = matrix.Length - 1;
+            int i = n;
+            while(i > 0){
+                result.Add(matrix[line][column]);
+                column++;
+                i--;
+            }
+            bool right = false;
+            bool down = true;
+            // Now begins the loop, following the steps mentioned earlier
+            while (n > 0 || m > 0)
+            {
+                if (right)
+                {
+                    i = n;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        column++;
+                        i--;
+                    }
+                    right = false;
+                    down = true;
+                    n--;
+                    continue;
+                }
+                if (down)
+                {
+                    i = m;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        line++;
+                        i--;
+                    }
+                    down = false;
+                    left = true;
+                    m--;
+                    continue;
+                }
+                if (left)
+                {
+                    i = n;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        column--;
+                        i--;
+                    }
+                    left = false;
+                    up = true;
+                    n--;
+                    continue;
+                }
+                if (up)
+                {
+                    i = m;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        line--;
+                        i--;
+                    }
+                    up = false;
+                    right = true;
+                    m--;
+                }
+            }
+            if (n == 0)
+            {
+                if (up)
+                {
+                    i = m;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        line--;
+                        i--;
+                    }
+                }
+                else
+                {
+                    i = m;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        line++;
+                        i--;
+                    }
+                }
+            }
+            else
+            {
+                if (right)
+                {
+                    i = n;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        column++;
+                        i--;
+                    }
+                }
+                else
+                {
+                    i = n;
+                    while(i > 0){
+                        result.Add(matrix[line][column]);
+                        column--;
+                        i--;
+                    }
+                }
+            }
+            if(matrix[line].Length == matrix.Length && matrix[line].Length % 2 == 1)
+                result.Add(matrix[line][column]);
+            return result;
+        }
+        public static IList<int> SpiralOrderGPT(int[][] matrix) {
+            IList<int> result = new List<int>();
+            if (matrix.Length == 0) return result;
+            int rowBegin = 0;
+            int rowEnd = matrix.Length - 1;
+            int colBegin = 0;
+            int colEnd = matrix[0].Length - 1;
+
+            while (rowBegin <= rowEnd && colBegin <= colEnd) {
+                for (int col = colBegin; col <= colEnd; col++) {
+                    result.Add(matrix[rowBegin][col]);
+                }
+                rowBegin++;
+
+                for (int row = rowBegin; row <= rowEnd; row++) {
+                    result.Add(matrix[row][colEnd]);
+                }
+                colEnd--;
+
+                if (rowBegin <= rowEnd) {
+                    for (int col = colEnd; col >= colBegin; col--) {
+                        result.Add(matrix[rowEnd][col]);
+                    }
+                }
+                rowEnd--;
+
+                if (colBegin <= colEnd) {
+                    for (int row = rowEnd; row >= rowBegin; row--) {
+                        result.Add(matrix[row][colBegin]);
+                    }
+                }
+                colBegin++;
+            }
+
+            return result;
+        }
+
+        
         
         public static void Main(string[] args)
         {
-            string s = "abcabcbb"; 
-            LengthOfLongestSubstring(s);
+            // Create a int[][] array with these values : [
+            /*
+            [[1,2,3],[4,5,6],[7,8,9]]*/
+            int[][] matrix = new int[3][];
+            matrix[0] = new int[] {1, 2, 3};
+            matrix[1] = new int[] {4, 5, 6};
+            matrix[2] = new int[] {7, 8, 9};
+            
+            Console.WriteLine(SpiralOrder(matrix));
         }
     }
 }
