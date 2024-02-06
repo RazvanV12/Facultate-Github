@@ -581,7 +581,91 @@ namespace LeetCode_Problems
             return result;
         }
 
+        /*48. Rotate Image
+         The first thing we notice is that first line becomes column n-1, second line becomes column n-2 and so on. The problem comes in modifying the matrix in place, we do that by rotating the edge of the matrix and then going deeper in the matrix by 1 line and 1 column*/
+        public static void Rotate(int[][] matrix)
+        {
+            var numberOfRotations = matrix.Length / 2;
+            var rotationNumber = 0;
+            while (rotationNumber < numberOfRotations)
+            {
+                for (var i = rotationNumber; i < matrix.Length - rotationNumber - 1; i++)
+                {
+                    var aux1 = matrix[i][matrix.Length - rotationNumber - 1];
+                    var aux2 = matrix[matrix.Length - rotationNumber - 1][matrix.Length - i - 1];
+                    var aux3 = matrix[matrix.Length - i - 1][rotationNumber];
+                    matrix[i][matrix.Length - rotationNumber - 1] = matrix[rotationNumber][i];
+                    matrix[matrix.Length - rotationNumber - 1][matrix.Length - i - 1] = aux1;
+                    matrix[matrix.Length - i - 1][rotationNumber] = aux2;
+                    matrix[rotationNumber][i] = aux3;
+                }
+                rotationNumber++;
+            }
+        }
         
+        /* 73. Set Matrix Zeroes
+         The solution using O(m+n) uses an array of size m which holds all the lines that you need to make equal to 0 and an array
+         of size n that holds all the columns that you need to make equal to 0. You populate these arrays by simply
+         walking once through the matrix and then you walk again to modify it.
+         */
+        public static void SetZeroes(int[][] matrix)
+        {
+            var nrColumns = matrix[0].Length;
+            var nrLines = matrix.Length;
+            var firstLine = false;
+            var firstColumn = false;
+            for (int i = 0; i < nrColumns; i++)
+            {
+                if (matrix[0][i] == 0)
+                    firstLine = true;
+            }
+            for (int i = 0; i < nrLines; i++)
+            {
+                if (matrix[i][0] == 0)
+                    firstColumn = true;
+            }
+            for (var i = 1; i < nrLines; i++)
+            {
+                for (var j = 1; j < nrColumns; j++)
+                {
+                    if (matrix[i][j] == 0)
+                    {
+                        matrix[0][j] = 0;
+                        matrix[i][0] = 0;
+                    }
+                }
+            }
+            for (var i = 1; i < nrLines; i++)
+            {
+                if (matrix[i][0] == 0)
+                {
+                    for (var j = 0; j < nrColumns; j++)
+                        matrix[i][j] = 0;
+                }
+            }
+            for (var j = 1; j < nrColumns; j++)
+            {
+                if (matrix[0][j] == 0)
+                {
+                    for (var i = 0; i < nrLines; i++)
+                        matrix[i][j] = 0;
+                }
+            }
+            if (firstLine)
+            {
+                for (int j = 0; j < nrColumns; j++)
+                {
+                    matrix[0][j] = 0;
+                }
+            }
+            if (firstColumn)
+            {
+                for (int i = 0; i < nrLines; i++)
+                {
+                    matrix[i][0] = 0;
+                }
+            }
+        }
         
         public static void Main(string[] args)
         {
@@ -589,11 +673,11 @@ namespace LeetCode_Problems
             /*
             [[1,2,3],[4,5,6],[7,8,9]]*/
             int[][] matrix = new int[3][];
-            matrix[0] = new int[] {1, 2, 3};
-            matrix[1] = new int[] {4, 5, 6};
-            matrix[2] = new int[] {7, 8, 9};
+            matrix[0] = new int[] {0, 2, 3, 0};
+            matrix[1] = new int[] {4, 5, 6, 2};
+            matrix[2] = new int[] {7, 8, 9, 5};
             
-            Console.WriteLine(SpiralOrder(matrix));
+            SetZeroes(matrix);
         }
     }
 }
