@@ -667,17 +667,59 @@ namespace LeetCode_Problems
             }
         }
         
+        // 49. Group Anagrams
+        // The idea is to have a dictionary with keys of arrays ( frequence array, where we count how many times each letter appears in the word ) and the values will be 
+        // the index of the word in the given array. Doing so we associate the anagrams via the frequence array and we simply print the dictionary.
+        // The issue with this solution is that even if the key is equal to the frequence array of the new word, when we check the dictionary it will return that 
+        // it does not contain such a key because the frequence array and the key from the dictionary are 2 distinct elements in the memory, even if they are identical
+        
+        /*public static IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            Dictionary<List<int>, List<int>> myDict = new Dictionary<List<int>, List<int>>();
+            IList<IList<string>> result = new List<IList<string>>();
+            for (int i = 0; i < strs.Length; i++)
+            {
+                List<int> aux = new List<int>(new int[26]);
+                for (int j = 0; j < strs[i].Length; j++)
+                {
+                    aux[strs[i][j] - 97]++;
+                }
+
+                if (myDict.ContainsKey(aux))
+                {
+                    myDict[aux].Add(i);
+                }
+                else
+                {
+                    List<int> auxToAdd = new List<int>(new int[] { i });
+                    myDict.Add(aux, auxToAdd);
+                }
+            }
+
+            foreach (KeyValuePair<List<int>, List<int>> element in myDict)
+            {
+                List<string> wordsToAdd = new List<string>();
+                foreach (var value in element.Value)
+                {
+                    wordsToAdd.Add(strs[value]);
+                }
+
+                result.Add(wordsToAdd);
+            }
+            return result;
+        }
+        */
+
+        public static IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            return null;
+        }
+        
+        
         public static void Main(string[] args)
         {
-            // Create a int[][] array with these values : [
-            /*
-            [[1,2,3],[4,5,6],[7,8,9]]*/
-            int[][] matrix = new int[3][];
-            matrix[0] = new int[] {0, 2, 3, 0};
-            matrix[1] = new int[] {4, 5, 6, 2};
-            matrix[2] = new int[] {7, 8, 9, 5};
-            
-            SetZeroes(matrix);
+            string[] parameter = new string[] { "eat", "tea", "tan", "ate", "nat", "bat" };
+            GroupAnagrams(parameter);
         }
     }
 }
