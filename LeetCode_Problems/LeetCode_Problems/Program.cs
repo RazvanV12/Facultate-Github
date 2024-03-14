@@ -710,15 +710,83 @@ namespace LeetCode_Problems
         }
         */
 
+        // A second idea is to simply have an array of tuples of a bool (representing if the word has been assigned or not) and an array of frequencies to check if 
+        // the current word is an anagram with the word we are checking. If yes, we make the bool true and assign it to the result list.
         public static IList<IList<string>> GroupAnagrams(string[] strs)
         {
-            return null;
+            IList<IList<string>> result = new List<IList<string>>();
+            List<List<int>> frequencies = new List<List<int>>();
+            for (int i = 0; i < strs.Length; i++)
+            {
+                List<int> frequencyList = new List<int>(new int[26]);
+                for (int j = 0; j < strs[i].Length; j++)
+                {
+                    frequencyList[strs[i][j] - 97]++;
+                }
+                frequencies.Add(frequencyList);
+            }
+
+            List<int> assignedWords = new List<int>();
+            for (int i = 0; i < strs.Length; i++)
+            {
+                if (assignedWords.BinarySearch(i) < 0)
+                {
+                    List<string> auxResult = new List<string>();
+                    auxResult.Add(strs[i]);
+                    assignedWords.Add(i);
+                    assignedWords.Sort();
+                    for (int j = i + 1; j < strs.Length; j++)
+                    {
+                        if (assignedWords.BinarySearch(j) < 0 && frequencies[i].SequenceEqual(frequencies[j]))
+                        {
+                            auxResult.Add(strs[j]);
+                            assignedWords.Add(j);
+                            assignedWords.Sort();
+                        }
+                    }
+                    result.Add(auxResult);
+                }
+            }
+
+            return result;
         }
+        // Test casses passed, but TLE (time limit exceeded)
+        // Solution made by ChatGpt:
+        /*public static IList<IList<string>> GroupAnagrams(string[] strs)
+        {
+            Dictionary<string, List<string>> myDict = new Dictionary<string, List<string>>();
+            IList<IList<string>> result = new List<IList<string>>();
+            for (int i = 0; i < strs.Length; i++)
+            {
+                char[] aux = strs[i].ToCharArray();
+                Array.Sort(aux);
+                string key = new string(aux);
+                if (myDict.ContainsKey(key))
+                {
+                    myDict[key].Add(strs[i]);
+                }
+                else
+                {
+                    List<string> auxToAdd = new List<string>(new string[] { strs[i] });
+                    myDict.Add(key, auxToAdd);
+                }
+            }
+
+            foreach (KeyValuePair<string, List<string>> element in myDict)
+            {
+                result.Add(element.Value);
+            }
+            return result;
+        }
+        */
+        
+        
+        
         
         
         public static void Main(string[] args)
         {
-            string[] parameter = new string[] { "eat", "tea", "tan", "ate", "nat", "bat" };
+            string[] parameter = new string[] { "hhhhu","tttti","tttit","hhhuh","hhuhh","tittt" };
             GroupAnagrams(parameter);
         }
     }
