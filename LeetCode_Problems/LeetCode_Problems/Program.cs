@@ -1018,13 +1018,227 @@ namespace LeetCode_Problems
             else
                 return x * MyPow(x * x, n / 2);
         }
+
+        // 452. Minimum Number of Arrows to Burst Balloons
+        public static int FindMinArrowShots(int[][] points)
+        {
+            List<int[]> Balloons = new List<int[]>(points);
+            Balloons.Sort((x, y) => x[0] == y[0] ? x[1].CompareTo(y[1]) : x[0].CompareTo(y[0]));
+            for (int i = 0; i < Balloons.Count() - 1; i++)
+            {
+                for (int j = i + 1; j < Balloons.Count(); j++)
+                {
+                    if (Math.Max(Balloons[i][0], Balloons[j][0]) <= Math.Min(Balloons[i][1], Balloons[j][1]))
+                    {
+                        Balloons[i][0] = Math.Max(Balloons[i][0], Balloons[j][0]);
+                        Balloons[i][1] = Math.Min(Balloons[i][1], Balloons[j][1]);
+                        Balloons.RemoveAll(x => x == Balloons[j]);
+                        j--;
+                    }
+                }
+            }
+            return Balloons.Count();
+        }
+        public static int FindMinArrowBalloons2(int[][] points)
+        {
+            Array.Sort(points, (x, y) => x[1].CompareTo(y[1]));
+            int arrows = 1;
+            int end = points[0][1];
+            for (int i = 1; i < points.Length; i++)
+            {
+                if (points[i][0] > end)
+                {
+                    arrows++;
+                    end = points[i][1];
+                }
+            }
+            return arrows;
+        }
+        
+        // 71. Simplify Path
+        // If we encounter 3 or more '.' - it's a file name
+        // If we encounter 2 '.' ( between 2 '/' ) - we remove a file/directory name from the stack, it translates to the parent directory:
+        // Ex: we have the path "/a/../c/" - it basically means we go in the 'a' directory, then we go back to the parent directory because of '..'
+        // and then we go to the c directory so the canonical path will be "/c"
+        // If we encounter 1 '.' - we do nothing, it translates to the current directory
+        public static string SimplifyPath(string path)
+        {
+            int firstSlash = 0;
+            int secondSlash = path.IndexOf('/', firstSlash + 1);
+            Stack<string> stack = new Stack<string>();
+            while (firstSlash != path.Length - 1)
+            {
+                if (secondSlash == -1)
+                {
+                    secondSlash = path.Length;
+                    if (path.Substring(firstSlash + 1, secondSlash - firstSlash - 1) == "..")
+                    {
+                        if(stack.Any())
+                            stack.Pop();
+                        if(stack.Any())
+                            stack.Pop();
+                        break;
+                    }
+                    if (path.Substring(firstSlash + 1, secondSlash - firstSlash - 1) == ".")
+                    {
+                        break;
+                    }
+                
+                    stack.Push("/");
+                    stack.Push(path.Substring(firstSlash + 1, secondSlash - firstSlash - 1));
+                    break;
+                }
+                if (secondSlash - firstSlash == 1)
+                {
+                    firstSlash = secondSlash;
+                    secondSlash = path.IndexOf('/', firstSlash + 1);
+                    continue;
+                }
+                if (path.Substring(firstSlash + 1, secondSlash - firstSlash - 1) == "..")
+                {
+                    if(stack.Any())
+                        stack.Pop();
+                    if(stack.Any())
+                        stack.Pop();
+                    firstSlash = secondSlash;
+                    secondSlash = path.IndexOf('/', firstSlash + 1);
+                    continue;
+                }
+                if (path.Substring(firstSlash + 1, secondSlash - firstSlash - 1) == ".")
+                {
+                    firstSlash = secondSlash;
+                    secondSlash = path.IndexOf('/', firstSlash + 1);
+                    continue;
+                }
+                
+                stack.Push("/");
+                stack.Push(path.Substring(firstSlash + 1, secondSlash - firstSlash - 1));
+                firstSlash = secondSlash;
+                secondSlash = path.IndexOf('/', firstSlash + 1);
+            }
+
+            if (!stack.Any())
+                return "/";
+            else
+            {
+                Stack<string> aux = new Stack<string>();
+                foreach (var element in stack)
+                {
+                    aux.Push(element);
+                }
+
+                string result = null;
+                foreach (var element in aux)
+                {
+                    result += element;
+                }
+                return result;
+            }
+        }
+        
+        // 155. Min Stack
+        // The idea is to use a List to hold the elements of the stack and another List to hold the minimum value for each stage of the stack, so when we 
+        // remove 5 elements from a stack of size 7, we simply check min[2] to see what was the minimum value when the stack had only 2 elements.
+        // The complexity of all the methods will be O(1)
+        public class MinStack {
+
+            private List<int> min;
+            private List<int> stack;
+            private int size;
+            public MinStack() {
+                stack = new List<int>();
+                min = new List<int>();
+                size = 0;
+            }
+    
+            public void Push(int val) {
+                stack.Add(val);
+                if (min.Count == 0)
+                    min.Add(val);
+                else
+                {
+                    if (val < min[size - 1])
+                        min.Add(val);
+                    else
+                        min.Add(min[size - 1]);
+                }
+                size++;
+            }
+    
+            public void Pop()
+            {
+                stack.RemoveAt(size - 1);
+                min.RemoveAt(size - 1);
+                size--;
+            }
+    
+            public int Top()
+            {
+                return stack[size - 1];
+            }
+    
+            public int GetMin()
+            {
+                return min[size - 1];
+            }
+        }
         
         
+        // 150. Evaluate Reverse Polish Notation
+        // The idea is to have a stack and each number we encounter we add it to the stack, when we have an operator, we pull out 2 numbers from the stack
+        // make the appropriate operation and then push back in the result
+
+        public static int EvalRPN(string[] tokens)
+        {
+            Stack<string> stack = new Stack<string>();
+            int operand1, operand2;
+            foreach (var element in tokens)
+            {
+                if (element == "+")
+                {
+                    operand1 = Int32.Parse(stack.Pop());
+                    operand2 = Int32.Parse(stack.Pop());
+                    stack.Push((operand1 + operand2).ToString());
+                    continue;
+                }
+                if (element == "-")
+                {
+                    operand1 = Int32.Parse(stack.Pop());
+                    operand2 = Int32.Parse(stack.Pop());
+                    stack.Push((operand2 - operand1).ToString());
+                    continue;
+                }
+                if (element == "*")
+                {
+                    operand1 = Int32.Parse(stack.Pop());
+                    operand2 = Int32.Parse(stack.Pop());
+                    stack.Push((operand1 * operand2).ToString());
+                    continue;
+                }
+                if (element == "/")
+                {
+                    operand1 = Int32.Parse(stack.Pop());
+                    operand2 = Int32.Parse(stack.Pop());
+                    stack.Push((operand2 / operand1).ToString());
+                    continue;
+                }
+
+                stack.Push(element);
+            }
+
+            return Int32.Parse(stack.Pop());
+        }
+        
+        // 2. Add two numbers 
+        // The first idea that comes to mind is to walk through both lists till we exhaust both of them, changing the value of the current node to the 
+        // sum % 10 and checking to see if the sum exceeds 10. If we finish one of the list we simply keep iterating through the next, considering the other
+        // node to be 0. After that, we simply return the list that is the longest.
         
         public static void Main(string[] args)
         {
-            // Print factorial of 5 using the functon calculateFactorial
-            Console.WriteLine(TrailingZeroes2(9));
+            // Write a variable input of [[3,9],[7,12],[3,8],[6,8],[9,10],[2,9],[0,9],[3,9],[0,6],[2,8]]
+            string[] input = new []{"4","13","5","/","+"};
+            Console.WriteLine(EvalRPN(input));
         }
     }
 }
