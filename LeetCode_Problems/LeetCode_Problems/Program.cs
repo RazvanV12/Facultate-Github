@@ -1234,11 +1234,156 @@ namespace LeetCode_Problems
         // sum % 10 and checking to see if the sum exceeds 10. If we finish one of the list we simply keep iterating through the next, considering the other
         // node to be 0. After that, we simply return the list that is the longest.
         
+        public class ListNode { 
+            public int val;
+            public ListNode next;
+            public ListNode(int val=0, ListNode next=null) {
+                this.val = val;
+                this.next = next; 
+            }
+        }
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+            bool l1IsLonger = false;
+            bool l2IsLonger = false;
+            int memory = 0;
+            ListNode l1Start = l1;
+            ListNode l2Start = l2;
+            int sum;
+            if (l1.next == null && l2.next != null)
+                l2.val += l1.val;
+            if (l1.next != null && l2.next == null)
+                l1.val += l2.val;
+            while (l1.next != null || l2.next != null)
+            {
+                if (l2.next == null && l1.next != null)
+                {
+                    l1IsLonger = true;
+                }
+                if (l2.next != null && l1.next == null)
+                {
+                    l2IsLonger = true;
+                }
+                if (l1.next == null)
+                {
+                    sum = l2.val;
+                    l2.val = (sum + memory) % 10;
+                    memory = (sum + memory) / 10;
+                    l2 = l2.next;
+                    continue;
+                }
+                if (l2.next == null)
+                {
+                    sum = l1.val;
+                    l1.val = (sum + memory) % 10;
+                    memory = (sum + memory) / 10;
+                    l1 = l1.next;
+                    continue;
+                }
+                sum = l1.val + l2.val;
+                l1.val = (sum + memory) % 10;
+                l2.val = (sum + memory) % 10;
+                memory = (sum + memory) / 10;
+                l1 = l1.next;
+                l2 = l2.next;
+                if (l1.next == null && l2.next != null)
+                    l2.val += l1.val;
+                if (l1.next != null && l2.next == null)
+                    l1.val += l2.val;
+            }
+
+            if (l1IsLonger)
+            {
+                sum = l1.val;
+                l1.val = (sum + memory) % 10;
+                if ((sum + memory) / 10 == 1)
+                    l1.next = new ListNode(1);
+                return l1Start;
+            }
+
+            if (l2IsLonger)
+            {
+                sum = l2.val;
+                l2.val = (sum + memory) % 10;
+                if ((sum + memory) / 10 == 1)
+                    l2.next = new ListNode(1);
+                return l2Start;
+            }
+            sum = l1.val + l2.val;
+            l1.val = (sum + memory) % 10;
+            l2.val = (sum + memory) % 10;
+            if ((sum + memory) / 10 == 1)
+                l2.next = new ListNode(1);
+            return l2Start;
+        }
+        
+        // 138. Copy List with Random Pointer
+        // The problem is that we can't assign the random pointer before completely creating the copied list since the random pointer might point to a Node that
+        // hasn't been created yet. To solve this, we use a hashMap where we store the inputNode as key and copiedNode as value.
+        // We populate the hashMap as we create the copied List, without assigning the random pointer yet. After we created all the copied Nodes
+        // we iterate again through the input List and for each copied Node we assign the random pointer using the hashMap
+
+        public class Node {
+            public int val;
+            public Node next;
+            public Node random;
+    
+            public Node(int _val) {
+                val = _val;
+                next = null;
+                random = null;
+            }
+        }
+        public static Node CopyRandomList(Node head)
+        {
+            if (head == null)
+                return null;
+            if (head.next == null)
+            {
+                Node copyHead = new Node(head.val);
+                copyHead.random = head.random == null ? null : copyHead;
+                return copyHead;
+            }
+            var myDict = new Dictionary<Node, Node>();
+            var previousNode = head;
+            var currentNode = head.next;
+            Node copyPreviousNode = new Node(head.val), copyCurrentNode;
+            var headResult = copyPreviousNode;
+            while (currentNode.next != null)
+            {
+                copyCurrentNode = new Node(currentNode.val);
+                copyPreviousNode.next = copyCurrentNode;
+                myDict.Add(previousNode, copyPreviousNode);
+                previousNode = currentNode;
+                currentNode = currentNode.next;
+                copyPreviousNode = copyCurrentNode;
+            }
+            copyCurrentNode = new Node(currentNode.val);
+            copyPreviousNode.next = copyCurrentNode;
+            myDict.Add(previousNode, copyPreviousNode);
+            myDict.Add(currentNode, copyCurrentNode);
+            // Add random pointers
+            currentNode = head;
+            while (currentNode.next != null)
+            {
+                myDict[currentNode].random = currentNode.random == null ? null : myDict[currentNode.random];
+                currentNode = currentNode.next;
+            }
+            myDict[currentNode].random = currentNode.random == null ? null : myDict[currentNode.random];
+            return headResult;
+        }
+        
         public static void Main(string[] args)
         {
-            // Write a variable input of [[3,9],[7,12],[3,8],[6,8],[9,10],[2,9],[0,9],[3,9],[0,6],[2,8]]
-            string[] input = new []{"4","13","5","/","+"};
-            Console.WriteLine(EvalRPN(input));
+            // Call the CopyRandomPointer function with this input : [[3,null],[3,0],[3,null]]
+            Node node1 = new Node(3);
+            Node node2 = new Node(3);
+            Node node3 = new Node(3);
+            node1.next = node2;
+            node2.next = node3;
+            node2.random = node1;
+            Node result = CopyRandomList(node1);
+            Console.WriteLine(result.val);
         }
     }
 }
